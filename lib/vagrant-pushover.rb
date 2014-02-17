@@ -1,8 +1,8 @@
 require "pathname"
 require "vagrant-pushover/version"
+require "vagrant-pushover/plugin"
 
 module VagrantPlugins
-  module Pushover
-    # Your code goes here...
+  module Pushover    
   end
 end

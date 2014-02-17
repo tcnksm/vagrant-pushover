@@ -6,10 +6,23 @@ end
 
 module VagrantPlugins
   module Pushover
-    name "pushover"
-    description <<-DESC
-    This plugin add a pushover notification to your vagrant command.
-    This notificates `up` or `provision` is over.
-    DESC
+
+    class Plugin < Vagrant.plugin("2")
+      name "Pushover"
+      description <<-DESC
+      This plugin add a pushover notification to your vagrant command.
+      This notificates `up` or `provision` is over.
+      DESC
+
+      action_hook("pushover_hook", :machine_action_up) do |hook|
+        require_relative "action"
+        hook.prepend(Action)
+      end
+
+      config(:pushover) do
+        require_relative "config"
+        Config
+      end
+    end
   end
 end
