@@ -39,9 +39,9 @@ end
 
 Nofication is not send unless add this configuration. You can set other parameters here, check pushover API documentation [here](https://pushover.net/api). 
 
-## When notification is sent
+## When notification is sent ?
 
-Notification is sent in below cases.
+Notification is sent after below commands.
 
 - `vagrant up`
     - When machine is not yet provisioned.
