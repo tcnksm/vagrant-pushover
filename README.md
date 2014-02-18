@@ -1,8 +1,8 @@
 # Vagrant Pushover
 
-This is a [Vagrant](http://www.vagrantup.com/) plugin that add pushover notification function to your Vagrant, allowing Vagrant to push noticate your iOS/Androind.
+This is a [Vagrant](http://www.vagrantup.com/) plugin that add pushover notification function to your Vagrant, allowing Vagrant to push noticate your iOS/Androind. If your provisioning takes too much time, use this plugin and go out to have good coffee :coffee: .
 
-## Requirement
+![](https://github.com/tcnksm/vagrant-pushover/images/sample.png)
 
 ## Installation
 
