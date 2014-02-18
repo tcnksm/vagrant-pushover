@@ -19,6 +19,16 @@ module VagrantPlugins
         hook.prepend(Action)
       end
 
+      action_hook("pushover_hook", :machine_action_provision) do |hook|
+        require_relative "action"
+        hook.prepend(Action)
+      end
+
+      action_hook("pushover_hook", :machine_action_reload) do |hook|
+        require_relative "action"
+        hook.prepend(Action)
+      end
+
       config(:pushover) do
         require_relative "config"
         Config
