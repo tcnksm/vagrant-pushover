@@ -2,7 +2,7 @@
 
 This is a [Vagrant](http://www.vagrantup.com/) plugin that add [pushover](https://pushover.net/api) notification function to your Vagrant, allowing Vagrant to push noticate your iOS/Androind. If your provisioning takes too much time, use this plugin and go out to have good :coffee:, you can know when you should go back your seat.
 
-![](https://github.com/tcnksm/vagrant-pushover/blob/master/images/sample.png)
+![](https://raw.github.com/tcnksm/vagrant-pushover/master/images/sample.png)
 
 ## Requirement
 
