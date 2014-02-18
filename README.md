@@ -37,7 +37,7 @@ end
 
 Nofication is not send unless add this configuration. You can set other parameters here, check pushover API documentation [here](https://pushover.net/api). 
 
-## How it works
+## When notification is sent
 
 Notification is sent in below cases.
 
