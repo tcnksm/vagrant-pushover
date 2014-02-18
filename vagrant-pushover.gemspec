@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = VagrantPlugins::Pushover::VERSION
   spec.authors       = ["tcnksm"]
   spec.email         = ["nsd22843@gmail.com"]
-  spec.summary       = %q{Enable pushover notification. }
-  spec.description   = %q{Enable pushover notification to your iOS/Android. }
-  spec.homepage      = ""
+  spec.summary       = %q{Vagrant plugin that adds pushover notification }
+  spec.description   = %q{Vagrant plugin that adds pushover notification to your iOS/Android. }
+  spec.homepage      = "https://github.com/tcnksm/vagrant-pushover"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
