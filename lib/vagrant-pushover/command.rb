@@ -4,6 +4,10 @@ module VagrantPlugins
   module Pushover
     class Command < Vagrant.plugin("2", :command)
 
+      def self.synopsis
+        "generates pushover configration file"
+      end
+      
       def execute
         config_file = ::VagrantPlugins::Pushover.config_file
         if config_file.exist?

@@ -26,7 +26,7 @@ $ vagrant plugin install vagrant-pushover
 
 ## Usage
 
-Add configuration in your Vagrantfile. You must set `token` and `user`. 
+Add configuration in your Vagrantfile. You must set `token` and `user`.
 
 ```ruby
 Vagrant.configure("2") do |config|
@@ -36,8 +36,33 @@ Vagrant.configure("2") do |config|
     end
 end
 ```
+Nofication is not sent without this pushover configration. You can set other parameters here, check pushover API documentation [here](https://pushover.net/api). 
 
-Nofication is not send unless add this configuration. You can set other parameters here, check pushover API documentation [here](https://pushover.net/api). 
+
+If you want to share your `Vagrantfile` and you don't want to include your `token` and `user` key, generate pushover configuration file. 
+
+```bash
+$ vagrant pushover-init
+```
+
+By above command `.vagrant/pushover.rb` will be generated and you can add your `token` and `user` key here. 
+
+```ruby
+# .vagrant/pushover.rb
+module PushoverConfig
+  TOKEN  = "YOUR APP TOKEN"
+  USER   = "YOUR KEY"
+end
+```
+
+To read this pushover configuration file add `pushover.read_key` in your Vagrantfile.
+
+```ruby
+Vagrant.configure("2") do |config|
+    config.pushover.read_key
+end
+```
+
 
 ## When notification is sent ?
 
