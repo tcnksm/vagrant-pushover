@@ -14,6 +14,11 @@ module VagrantPlugins
       This notificates `up` or `provision` is over.
       DESC
 
+      command "pushover-init" do
+        require_relative "command"
+        Command
+      end
+
       action_hook("pushover_hook", :machine_action_up) do |hook|
         require_relative "action"
         hook.prepend(Action)

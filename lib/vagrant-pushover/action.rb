@@ -54,9 +54,9 @@ module VagrantPlugins
         status = res.start {|http| http.request(req)}.message
         
         if status == "OK"
-          @ui.info  "Send push notification."
+          @ui.info  "Send pushover notification."
         else
-          @ui.error "Send push notification is failed. Parameter is wrong."
+          @ui.error "Send pushover notification is failed. Parameter is wrong."
         end
         
       end

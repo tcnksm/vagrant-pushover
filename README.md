@@ -50,7 +50,6 @@ Notification is sent after below commands.
 - `vagrant reload --provision`
 - `vagrant provision`
 
-
 ## Contributing
 
 1. Fork it ( http://github.com/<my-github-username>/vagrant-pushover/fork )

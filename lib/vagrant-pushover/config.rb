@@ -37,9 +37,22 @@ module VagrantPlugins
       def set
         yield self if block_given?
       end
+
+      def read_key
+        config_file = ::VagrantPlugins::Pushover.config_file
+        if not config_file.exist?
+          ::VagrantPlugins::Pushover.write_default_key
+        end
+        
+        require config_file
+        @token = PushoverConfig::TOKEN
+        @user  = PushoverConfig::USER
+      end
+      
       
       def validate(machine)
         errors = []
+        errors << "Edit .vagrant/pushover.rb and set your keys."          if @execute && (@token == "YOUR APP TOKEN" || @user == "YOUR USER KEY" )
         errors << "Your application's API token must be set."            if @execute && !@token
         errors << "The user/group key must be set."                      if @execute && !@user
         errors << "You don't need Emergency priority(2) in this plugin." if @execute && @priority == 2
