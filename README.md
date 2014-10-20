@@ -59,7 +59,9 @@ To read this pushover configuration file add `pushover.read_key` in your Vagrant
 
 ```ruby
 Vagrant.configure("2") do |config|
-    config.pushover.read_key
+    if Vagrant.has_plugin?("vagrant-pushover")
+        config.pushover.read_key
+    end
 end
 ```
 
