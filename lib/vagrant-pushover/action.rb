@@ -24,41 +24,34 @@ module VagrantPlugins
         
         case action
         when :up
-          nortification config if state != :running && provision && config.execute
+          notification config if state != :running && provision && config.execute
         when :reload          
-          nortification config if provision && config.execute
+          notification config if provision && config.execute
         when :provision
-          nortification config if config.execute
+          notification config if config.execute
         end
       end
       
-      def nortification config
-        message = "[#{@machine}] " + config.message
-        url = URI.parse("https://api.pushover.net/1/messages.json")
-        req = Net::HTTP::Post.new(url.path)        
-        req.set_form_data({
-                            token:     config.token,
-                            user:      config.user, 
-                            message:   message,
-                            title:     config.title,
-                            device:    config.device,
-                            url:       config.url,      
-                            url_title: config.url_title,
-                            priority:  config.priority, 
-                            timestamp: config.timestamp,
-                            sound:     config.sound,    
-                          })
-        res = Net::HTTP.new(url.host, url.port)
-        res.use_ssl = true
-        res.verify_mode = OpenSSL::SSL::VERIFY_PEER
-        status = res.start {|http| http.request(req)}.message
-        
-        if status == "OK"
+      def notification(config)
+        params = {
+          token:     config.token,
+          user:      config.user,
+          message:   "[#{@machine}] #{config.message}",
+          title:     config.title,
+          device:    config.device,
+          url:       config.url,
+          url_title: config.url_title,
+          priority:  config.priority,
+          timestamp: config.timestamp,
+          sound:     config.sound,
+        }
+        res = Net::HTTP.post_form(URI.parse("https://api.pushover.net/1/messages.json"), params)
+
+        if res.message == "OK"
           @ui.info  "Send pushover notification."
         else
           @ui.error "Send pushover notification is failed. Parameter is wrong."
         end
-        
       end
     end
   end
