@@ -24,15 +24,15 @@ module VagrantPlugins
         
         case action
         when :up
-          nortification config if state != :running && provision && config.execute
+          notification config if state != :running && provision && config.execute
         when :reload          
-          nortification config if provision && config.execute
+          notification config if provision && config.execute
         when :provision
-          nortification config if config.execute
+          notification config if config.execute
         end
       end
       
-      def nortification(config)
+      def notification(config)
         params = {
           token:     config.token,
           user:      config.user,
